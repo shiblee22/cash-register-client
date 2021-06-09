@@ -14,7 +14,7 @@ const InputForm = () => {
     const [update, setUpdate] = useState(true)
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://localhost:3001/addTransaction`, {
+        fetch(`https://enigmatic-eyrie-46917.herokuapp.com/addTransaction`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -31,7 +31,7 @@ const InputForm = () => {
         .then(res =>{})
         const newFinalAmount = (transactionType === 'plus') ? (parseFloat(finalData.finalAmount) + parseFloat(amount)) : (parseFloat(finalData.finalAmount) - parseFloat(amount))
 
-        fetch(`http://localhost:3001/updateFinalAmount`, {
+        fetch(`https://enigmatic-eyrie-46917.herokuapp.com/updateFinalAmount`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const InputForm = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:3001/finalAmount`)
+        fetch(`https://enigmatic-eyrie-46917.herokuapp.com/finalAmount`)
         .then(res => res.json())
         .then(data => {
             setFinalData(data[0])
@@ -51,7 +51,7 @@ const InputForm = () => {
     },[update])
 
     useEffect(() => {
-        fetch(`http://localhost:3001/transactions`)
+        fetch(`https://enigmatic-eyrie-46917.herokuapp.com/transactions`)
         .then(res => res.json())
         .then(data => {
             setTransactions(data)
